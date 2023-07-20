@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    }
+
+    .product-item {
+      cursor: pointer;
+      display: flex; 
+      align-items: start; 
+      width: 1000px;
+    }
+
+    .description-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: flex-start;
+      margin-left: 30px;
+      width: 400px;
+    }
+
+    .category {
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    .category:hover {
+      color: blue;
+    }
+
+    .product-name:hover {
+      color: blue;
+    }
+
+    .order-block {
+      margin-top: 40px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: aqua;
+      color: black;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .buy-button:hover {
+      background-color: #45a049;
+    }
+
+    .form {
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 30px 0;
+      background-color: rgb(199, 213, 242);
+      border: 2px solid blue;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .header {
+      margin: 0 0 30px 30px;
+    }
+
+    .modal-window {
+      display: flex;
+      flex-direction: column;
+      padding: 0 30px;
+    }
+
+    .full-name,
+    .post-details,
+    .select-block
+    .comment-item {
+      font-style: italic;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .full-name,
+    .post-details,
+    .comment-item,
+    .select-block {
+      height: 30px;
+      font-size: 16px;
+      border: 1px solid blue;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .name-block,
+    .post-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comment-item {
+      height: 70px;
+    }
+
+    .payment-block,
+    .product-block {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 30px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .product-number {
+      height: 20px;
+      border: 1px solid blue;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+
+    .button-block {
+      display: flex;
+      justify-content: center;
+    }
+
+    .button,
+    .order-button {
+      width: 200px;
+      height: 40px;
+      padding: 10px 0;
+      border-radius: 10px;
+      border: 5px;
+      background-color: rgb(28, 90, 172);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: rgb(238, 241, 248);
+      color: black;
+      border: 1px solid rgb(28, 90, 172);
+    }
+
+    .order-button {
+      background-color: rgb(83, 153, 245);
+    }
+
+    .order-button:hover {
+      background: rgb(173, 208, 255);
+      color: black;
+      border: 1px solid rgb(1, 63, 96);
+    }
+
+    .table-container {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      table-layout: fixed; 
+    }
+
+    .table thead th {
+      background-color: #c6c5ec;
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #530bec;
+      width: 150px;
+    }
+
+    .table tbody tr {
+      background-color: #e0f1f6;
+    }
+
+    .table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 150px;
+    }
+
+    .order-block {
+      width: 600px;
+      
+    }
+
+    .list-item {
+      position: relative;
+      border: 1px solid #530bec;
+      border-radius: 10px;
+      margin: 10px 0;
+      padding: 15px 5px;
+      cursor: pointer;
+      background-color: #ededf5;
+      list-style: none;
+    }
+
+    .list-item:hover {
+      background-color: rgb(158, 200, 254);
+    }
+
+    .delete {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="greeting">
+    <h1 class="shop-name">Welcome to Shoppy Shop!</h1>
+  </header>
+  <main id="main" class="main"></main>
+  <div class="orders-container"></div>
+  <div class="form-container" style="display: none;">
+    <form class="form" name="main">
+      <h1 class="header">Your Order Form</h1>
+      <div class="modal-block" id="modal">
+        <div class="modal-window">
+          <div class="name-block">
+            <label for="name">Enter your full name:</label>
+            <input type="text" name="name" id="name" class="full-name"> 
+          </div>
+          <select name="select" id="city" class="select-block">
+            <option disabled="disabled" selected="selected" value="user-city" class="select-city">Choose your city</option>
+          </select>
+          <div class="post-block">
+            <label for="post">Enter number of Nova Poshta branch or Poshtomat:</label>
+            <input type="text" name="post" id="post" class="post-details"> 
+          </div>
+          <div class="payment-block">
+            <p>Choose your mode of payment</p>
+            <div>
+              <input type="radio" name="payment" id="cash" checked class="payment-mode" value="cash">
+              <label for="cash">Cash</label>
+              <input type="radio" name="payment" id="card" class="payment-mode" value="card">
+              <label for="card">Bank Card</label>          
+            </div>
+          </div>
+          <div class="product-block">
+            <label for="itemNumber">Number of products you buy: </label>
+            <input type="number" name="itemNumber" id="itemNumber" class="product-number" min="1" max="20"> 
+          </div>
+          <textarea name="comment" id="comment" cols="30" rows="4" placeholder="Leave you comment for your order" class="comment-item"></textarea>
+          <div class="button-block">
+            <button type="button" id="submit-btn" class="button">Confirm your order</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div>
+    <button type="button" id="order-btn" class="order-button">My orders</button>
+  </div>
+  <div class="table-container" style="display: none;">
+    <table id="table" class="table"></table>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
